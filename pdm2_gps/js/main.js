@@ -12,13 +12,25 @@ if ('serviceWorker' in navigator) {
 
 let posicaoInicial;
 const capturarLocalizacao = document.getElementById('localizacao');
+const irLocalizacao = document.getElementById('ir');
 const latitude = document.getElementById('latitude');
 const longitude = document.getElementById('longitude');
+const mapa = document.getElementById('gmap_canvas');
 
 const sucesso = (posicao) => {
     posicaoInicial = posicao;
     latitude.innerHTML = posicaoInicial.coords.latitude;
     longitude.innerHTML = posicaoInicial.coords.longitude;
+    mapa.src = "https://maps.google.com/maps?q=" + posicaoInicial.coords.latitude + "," + posicaoInicial.coords.longitude + "&t=&z=13&ie=UTF8&iwloc=&output=embed"
+};
+
+const sucessoIr = (posicao) => {
+    posicaoInicial = posicao;
+    posicaoInicial.coords.latitude = document.getElementById('latInput').value;
+    posicaoInicial.coords.longitude = document.getElementById('longInput').value;
+    latitude.innerHTML = posicaoInicial.coords.latitude;
+    longitude.innerHTML = posicaoInicial.coords.longitude;
+    mapa.src = "https://maps.google.com/maps?q=" + posicaoInicial.coords.latitude + "," + posicaoInicial.coords.longitude + "&t=&z=13&ie=UTF8&iwloc=&output=embed"
 };
 
 const erro = (error) => {
@@ -42,4 +54,8 @@ const erro = (error) => {
 
 capturarLocalizacao.addEventListener('click', () => {
     navigator.geolocation.getCurrentPosition(sucesso, erro);
+});
+
+irLocalizacao.addEventListener('click', () => {
+    navigator.geolocation.getCurrentPosition(sucessoIr, erro);
 });

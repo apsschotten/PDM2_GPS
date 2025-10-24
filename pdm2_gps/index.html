@@ -22,6 +22,11 @@
         <h2>Geolocalização</h2>
       </header>
       <div class="conteudoLocalizacao">
+        <input type="text" id="latInput" placeholder="Latitude" />
+        <input type="text" id="longInput" placeholder="Longitude" />
+        <div>
+          <button class="botao" id="ir">Ir Até a Localização</button>
+        </div>
         <p>
           Latitude: <span id="latitude">0.0</span>
         </p>
@@ -32,6 +37,31 @@
           <button class="botao" id="localizacao">Capturar Localização</button>
         </div>
       </div>
+
+      <div class="mapouter" style="align-self: center;">
+        <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"
+            src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+            href="https://embedgooglemap.net/124/"></a><br>
+          <style>
+            .mapouter {
+              position: relative;
+              text-align: right;
+              height: 500px;
+              width: 600px;
+            }
+          </style><a href="https://www.embedgooglemap.net"></a>
+          <style>
+            .gmap_canvas {
+              overflow: hidden;
+              background: none !important;
+              height: 500px;
+              width: 600px;
+            }
+          </style>
+        </div>
+      </div>
+
     </div>
     <footer class="rodape">
       Progressive Web Application - Geolocation
